@@ -1,26 +1,168 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Light — "Soft Atelier" (from reference image) */
+    --background: #fafaf8;
+    --foreground: #18181b;
+    /*--background: 48 56% 98%;     */       /* cream #FDFCF8 */
+    /*--foreground: 20 14% 34%;      */       /* deep earthy brown (readable heading/body) */
+    --card: 44 50% 99%;
+    --card-foreground: 20 14% 34%;
+    --popover: 44 50% 99%;
+    --popover-foreground: 20 14% 34%;
+    --primary: 16 16% 42%;               /* earthy brown for primary buttons */
+    --primary-foreground: 48 56% 98%;
+    --secondary: 99 29% 92%;             /* light sage #E8F0E4 */
+    --secondary-foreground: 20 14% 34%;
+    --muted: 99 22% 90%;                 /* sage-green surface #DCE6D5 */
+    --muted-foreground: 18 10% 48%;      /* muted earthy brown #8B7D77 */
+    --accent: 0 68% 64%;                 /* coral/peach, deepened for text contrast */
+    --accent-foreground: 48 56% 98%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 48 56% 98%;
+    --border: 95 18% 86%;                /* soft sage-tinted border */
+    --input: 95 18% 86%;
+    --ring: 0 68% 64%;                   /* coral focus ring */
+    --grid-dot: 0 78% 80%;               /* coral dots #F4A6A6 */
+    --grid-line: 95 18% 88%;             /* sage lines */
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    /* Dark — "Warm Dusk" (dark complement of the reference palette) */
+    --background: 20 14% 11%;            /* deep warm brown-black */
+    --foreground: 40 30% 86%;            /* warm off-white */
+    --card: 20 12% 15%;
+    --card-foreground: 40 30% 86%;
+    --popover: 20 12% 15%;
+    --popover-foreground: 40 30% 86%;
+    --primary: 0 60% 70%;                /* coral primary */
+    --primary-foreground: 20 14% 11%;
+    --secondary: 20 10% 17%;
+    --secondary-foreground: 40 30% 86%;
+    --muted: 20 10% 17%;
+    --muted-foreground: 30 18% 68%;
+    --accent: 0 70% 72%;                 /* lighter coral for dark surfaces */
+    --accent-foreground: 20 14% 11%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 30% 86%;
+    --border: 20 10% 22%;
+    --input: 20 10% 22%;
+    --ring: 0 70% 72%;
+    --grid-dot: 0 50% 32%;               /* dim coral dots */
+    --grid-line: 20 10% 20%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+/* 
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  } */
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+  
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(24, 24, 27, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(24, 24, 27, 0.04) 1px,
+        transparent 1px
+      );
+  
+    background-size: 40px 40px;
+  }
+
+  ::selection {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  /* Focus ring — high contrast blueprint accent */
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .bg-blueprint-grid {
+    background-image: radial-gradient(circle, hsl(var(--grid-dot)) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+
+  .bg-blueprint-lines {
+    background-image:
+      linear-gradient(to right, hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
