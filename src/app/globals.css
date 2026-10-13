@@ -31,56 +31,58 @@
 
 @layer base {
   :root {
-    /* Light — "Soft Atelier" (from reference image) */
-    --background: #fafaf8;
-    --foreground: #18181b;
-    /*--background: 48 56% 98%;     */       /* cream #FDFCF8 */
-    /*--foreground: 20 14% 34%;      */       /* deep earthy brown (readable heading/body) */
-    --card: 44 50% 99%;
-    --card-foreground: 20 14% 34%;
-    --popover: 44 50% 99%;
-    --popover-foreground: 20 14% 34%;
-    --primary: 16 16% 42%;               /* earthy brown for primary buttons */
-    --primary-foreground: 48 56% 98%;
-    --secondary: 99 29% 92%;             /* light sage #E8F0E4 */
-    --secondary-foreground: 20 14% 34%;
-    --muted: 99 22% 90%;                 /* sage-green surface #DCE6D5 */
-    --muted-foreground: 18 10% 48%;      /* muted earthy brown #8B7D77 */
-    --accent: 0 68% 64%;                 /* coral/peach, deepened for text contrast */
-    --accent-foreground: 48 56% 98%;
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 48 56% 98%;
-    --border: 95 18% 86%;                /* soft sage-tinted border */
-    --input: 95 18% 86%;
-    --ring: 0 68% 64%;                   /* coral focus ring */
-    --grid-dot: 0 78% 80%;               /* coral dots #F4A6A6 */
-    --grid-line: 95 18% 88%;             /* sage lines */
+    /* Light — "Soft Atelier" refined: deeper contrast, sharper coral, tighter neutrals */
+    --background: 42 50% 98%;            /* warm cream #FCFBF6 */
+    --foreground: 22 18% 20%;            /* deep espresso brown — strong readable contrast */
+    --card: 44 46% 99%;                  /* barely warmer white card */
+    --card-foreground: 22 18% 20%;
+    --popover: 44 46% 99%;
+    --popover-foreground: 22 18% 20%;
+    --primary: 22 28% 26%;               /* rich earthy brown for primary buttons */
+    --primary-foreground: 42 50% 98%;
+    --secondary: 99 11% 39%;             /* #617059 */
+    --secondary-foreground: 42 40% 96%;
+    --muted: 100 16% 91%;                /* sage-tinted surface */
+    --muted-foreground: 20 8% 42%;       /* deeper muted brown for readable secondary text */
+    --accent: 8 76% 57%;                 /* sharpened coral — more saturated, premium */
+    --accent-foreground: 42 50% 98%;
+    --destructive: 4 72% 52%;
+    --destructive-foreground: 42 50% 98%;
+    --border: 90 12% 87%;                /* soft sage-tinted border, less gray */
+    --input: 90 12% 87%;
+    --ring: 8 76% 57%;                   /* coral focus ring */
+    --grid-dot: 8 72% 68%;               /* vivid coral dots */
+    --grid-line: 90 12% 89%;             /* faint sage lines */
     --radius: 0.25rem;
+    --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   }
 
   .dark {
-    /* Dark — "Warm Dusk" (dark complement of the reference palette) */
-    --background: 20 14% 11%;            /* deep warm brown-black */
-    --foreground: 40 30% 86%;            /* warm off-white */
-    --card: 20 12% 15%;
-    --card-foreground: 40 30% 86%;
-    --popover: 20 12% 15%;
-    --popover-foreground: 40 30% 86%;
-    --primary: 0 60% 70%;                /* coral primary */
-    --primary-foreground: 20 14% 11%;
-    --secondary: 20 10% 17%;
-    --secondary-foreground: 40 30% 86%;
-    --muted: 20 10% 17%;
-    --muted-foreground: 30 18% 68%;
-    --accent: 0 70% 72%;                 /* lighter coral for dark surfaces */
-    --accent-foreground: 20 14% 11%;
-    --destructive: 0 60% 45%;
-    --destructive-foreground: 40 30% 86%;
-    --border: 20 10% 22%;
-    --input: 20 10% 22%;
-    --ring: 0 70% 72%;
-    --grid-dot: 0 50% 32%;               /* dim coral dots */
-    --grid-line: 20 10% 20%;
+    /* Dark — "Warm Dusk" refined: deeper ink, vivid coral, cleaner sage */
+    --background: 22 16% 9%;             /* deeper warm ink-black */
+    --foreground: 40 34% 88%;            /* warmer off-white, lifted for contrast */
+    --card: 22 14% 13%;
+    --card-foreground: 40 34% 88%;
+    --popover: 22 14% 13%;
+    --popover-foreground: 40 34% 88%;
+    --primary: 8 72% 66%;                /* vivid coral primary */
+    --primary-foreground: 22 16% 9%;
+    --secondary: 22 10% 16%;
+    --secondary-foreground: 40 34% 88%;
+    --muted: 22 10% 16%;
+    --muted-foreground: 32 16% 66%;
+    --accent: 8 76% 67%;                 /* sharpened coral for dark surfaces */
+    --accent-foreground: 22 16% 9%;
+    --destructive: 4 64% 48%;
+    --destructive-foreground: 40 34% 88%;
+    --border: 22 10% 21%;
+    --input: 22 10% 21%;
+    --ring: 8 76% 67%;
+    --grid-dot: 8 60% 38%;               /* dim vivid coral dots */
+    --grid-line: 22 10% 18%;
   }
 }
 
@@ -92,13 +94,13 @@
   html {
     scroll-behavior: smooth;
   }
-/* 
+
   body {
     @apply bg-background text-foreground font-body antialiased;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  } */
-  body {
+  }
+  /* body {
     margin: 0;
     background-color: var(--background);
     color: var(--foreground);
@@ -116,7 +118,7 @@
       );
   
     background-size: 40px 40px;
-  }
+  } */
 
   ::selection {
     background-color: hsl(var(--accent));

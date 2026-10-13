@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/navigation/Navbar";
 import "./globals.css";
-
+import Footer from "@/components/Footer";
+import SystemGrid from "@/components/SystemGrid";
 export const metadata: Metadata = {
   title: "Abeer Abdulwali Al-Shaibah | Senior Full-Stack Software Engineer",
   description:
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
+      {/* <SystemGrid /> */}
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
