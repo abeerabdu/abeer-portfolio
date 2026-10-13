@@ -13,13 +13,13 @@ import { Github, Mail, Send } from "lucide-react";
 export default function Contact() {
   const [sent, setSent] = useState(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Opens the user's email client pre-filled — no backend in v1.
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const message = form.message.value;
+    const form = new FormData(e.currentTarget);
+    const name = String(form.get("name") ?? "");
+    const email = String(form.get("email") ?? "");
+    const message = String(form.get("message") ?? "");
     const subject = encodeURIComponent(`Portfolio contact from ${name || email}`);
     const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
     window.location.href = `mailto:${social.email}?subject=${subject}&body=${body}`;

@@ -13,6 +13,18 @@ const FALLBACK_IMAGE_URL =
   "https://static.wixstatic.com/media/12d367_4f26ccd17f8f4e3a8958306ea08c2332~mv2.png"
 
 /**
+ * @typedef {React.ImgHTMLAttributes<HTMLImageElement> & {
+ *   src?: string,
+ *   fittingType?: "fill" | "fit",
+ *   originWidth?: number,
+ *   originHeight?: number,
+ *   focalPointX?: number,
+ *   focalPointY?: number,
+ *   quality?: number
+ * }} ImageProps
+ */
+
+/**
  * Image with built-in Wix Media Platform support: canonical public images on
  * media.base44.com and static.wixstatic.com/media are resized to the rendered
  * container per device pixel ratio and re-encoded to WebP; `fittingType="fill"`
@@ -21,6 +33,10 @@ const FALLBACK_IMAGE_URL =
  * original swaps to the generic fallback image.
  */
 const Image = React.forwardRef(
+  /**
+   * @param {ImageProps} props
+   * @param {React.ForwardedRef<HTMLImageElement>} ref
+   */
   (
     {
       src: source,

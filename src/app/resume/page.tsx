@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import { resume, social } from "@/data/portfolio";
 import { Download, Linkedin } from "lucide-react";
 
-function SkillGroup({ label, items }) {
+type SkillGroupProps = {
+  label: string;
+  items: string[];
+};
+
+function SkillGroup({ label, items }: SkillGroupProps) {
   return (
     <div>
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-3">{label}</p>
