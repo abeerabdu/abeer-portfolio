@@ -41,7 +41,6 @@ export default function Home() {
           </div>
 
           <Reveal>
-            {/* @ts-expect-error 'projects', 'Link', and 'ArrowRight' are not defined in this file. Add the appropriate imports at the top. */}
             <Link
               href="/work"
               className="mt-10 inline-flex items-center gap-2 font-mono text-sm text-accent hover:gap-3 transition-all"
