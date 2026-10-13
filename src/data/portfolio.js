@@ -26,7 +26,7 @@ export const profile = {
   ];
   
   export const social = {
-    email: "hello@abeeralshaibah.com",
+    email: "abeerabdu363@gmail.com",
     linkedin: "https://www.linkedin.com/in/abeer-al-shaibah",
     github: "https://github.com/abeer-al-shaibah",
   };
